@@ -80,4 +80,8 @@ corona_virus %>%
   head(10)
 ```
 
+## Comments
 
+I would greatly appreciate any feedback you may have. If you find a bug, please file an issue.
+
+Finally, a **HUGE** thanks to Rami Krispin for creating the {coronavirus} package!

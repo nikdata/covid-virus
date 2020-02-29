@@ -131,3 +131,11 @@ corona_virus %>%
     #>  8 United Arab Emirates         6     0         1
     #>  9 Norway                       5     0         0
     #> 10 UK                           5     0         0
+
+## Comments
+
+I would greatly appreciate any feedback you may have. If you find a bug,
+please file an issue.
+
+Finally, a **HUGE** thanks to Rami Krispin for creating the
+{coronavirus} package\!
