@@ -15,7 +15,8 @@
 #'
 get_cases <- function() {
 
-  source('R/load_funcs.R')
+  #source('R/load_funcs.R')
+  #devtools::load_all()
 
   cases <- get_datasets()
 

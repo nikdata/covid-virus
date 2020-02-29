@@ -20,4 +20,6 @@ Imports:
     purrr,
     tidyr,
     stringr,
-    lubridate
+    lubridate,
+    devtools,
+    testthat
