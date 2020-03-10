@@ -4,17 +4,26 @@
 \alias{get_cases}
 \title{Retrieve Corona Virust Cases}
 \usage{
-get_cases()
+get_cases(wide = FALSE)
+}
+\arguments{
+\item{wide}{A boolean expression to indicate if a wide dataframe is preferred. Default is FALSE.}
 }
 \value{
 a tidy dataframe of corona virus cases (infected, dead, cured)
 }
 \description{
-This function returns a dataframe of corona virus cases. It takes no input.
+This function returns a dataframe of corona virus cases. It has an optional input of <wide>.
+}
+\details{
+The wide option enables the confirmed, deaths, and recovered cases to appear in columns instead of in just one column.
 }
 \examples{
 \dontrun{
-cases <- refresh_cases()
+cases <- get_cases() # standard
+}
+\dontrun{
+cases <- get_cases(wide = TRUE) # wide dataframe
 }
 
 }
