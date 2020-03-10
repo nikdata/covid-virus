@@ -23,3 +23,7 @@ Imports:
     lubridate,
     devtools,
     testthat
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

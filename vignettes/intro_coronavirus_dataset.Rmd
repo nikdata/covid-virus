@@ -1,0 +1,83 @@
+---
+title: "Introduction to the Coronavirus Dataset"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to the Coronavirus Dataset}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### The Coronavirus Dataset
+
+The {covidvirus} package comes with one function `get_cases()` that retrieves a daily snapshot of confirmed, death, and recovered cases from the Johns Hopkins University Center for Systems Science and Engineering (JHU CCSE) Coronavirus [repository](https://github.com/CSSEGISandData/COVID-19).
+
+
+```{r setup}
+library(covidvirus)
+corona_virus <- covidvirus::get_cases()
+```
+
+
+The retrieved data consists of the following columns:
+
+- `province_state`: the province or state within the country (if applicable)
+- `country-region`: the country or region name
+- `lat`: the latitude
+- `long`: the longitude
+- `date`: the date of the summary
+- `type`: the classification of the case (e.g., infected, death, recovered)
+- `cases`: the total number of cases observed daily
+
+The returned dataset is a tibble and we can easily leverage any tidyverse compatible function.
+
+Let's take a look at the first few rows and the structure:
+
+```{r}
+head(corona_virus)
+```
+
+```{r}
+dplyr::glimpse(corona_virus)
+```
+
+
+### Brief Analysis
+
+Let's dive a bit into the data. We'll use the following libraries: `dplyr`.
+
+```{r, echo=FALSE}
+library(dplyr)
+```
+
+
+#### Total cases by Type
+
+```{r}
+
+corona_virus %>%
+  group_by(type) %>%
+  summarize(
+    total_cases = sum(cases)
+  ) %>%
+  ungroup()
+```
+
+#### Total cases by each country/region
+
+```{r}
+corona_virus %>%
+  group_by(country_region) %>%
+  summarize(
+    total_cases = sum(cases)
+  ) %>%
+  ungroup() %>%
+  arrange(desc(total_cases))
+```
+
