@@ -3,6 +3,7 @@
 export(get_cases)
 import(dplyr)
 import(stringr)
+import(tidyr)
 importFrom(janitor,make_clean_names)
 importFrom(lubridate,mdy)
 importFrom(lubridate,ymd)

@@ -39,7 +39,7 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example}
 library(covidvirus)
 
-corona_virus <- get_cases()
+corona_virus <- get_cases(wide=FALSE)
 
 ```
 
@@ -64,6 +64,7 @@ corona_virus %>%
   head(20)
 ```
 
+To manually create a wide dataframe, you can do the following (it is recommended to use the wide=TRUE argument):
 
 ```{r, echo=FALSE}
 library(tidyr)
@@ -79,6 +80,18 @@ corona_virus %>%
   arrange(desc(confirmed)) %>%
   head(10)
 ```
+
+### Wide Dataframe
+
+Sometimes it may be easier to have a "wide" dataframe that enables you to see the number of cases for each type in their own respective columns.
+
+```{r, echo=FALSE}
+
+covidvirus::get_cases(wide = TRUE) %>%
+  head(10)
+
+```
+
 
 ## Comments
 
