@@ -41,6 +41,12 @@ get_cases <- function(wide=FALSE) {
 
   output <- dplyr::bind_rows(cases[[1]], cases[[2]], cases[[3]])
 
+  # fix values
+  output <- fix_values(output)
+
+  # add continents column
+  output <- add_continents(output)
+
   # if user wants a wide dataframe, then this will create it
   if (wide == TRUE) {
     output <- output %>%
