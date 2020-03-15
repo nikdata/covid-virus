@@ -92,6 +92,10 @@ covidvirus::get_cases(wide = TRUE) %>%
 
 ```
 
+```{r}
+dplyr::glimpse(covidvirus::get_cases(wide = TRUE))
+```
+
 
 ## Comments
 
