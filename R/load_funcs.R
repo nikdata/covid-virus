@@ -75,7 +75,7 @@ fix_values <- function(df) {
   # fix some country names
   ans <- df %>%
     dplyr::mutate(
-      country_region = case_when(
+      country_region = dplyr::case_when(
         country_region == 'Mainland China' ~ 'China',
         country_region == 'US' ~ 'United States',
         country_region == "Cote d'Ivoire" ~ 'Ivory Coast',
@@ -294,6 +294,74 @@ add_continents <- function(df) {
         country_region == 'Taiwan' ~ 'Asia',
         country_region == 'Martinique' ~ 'North America',
         TRUE ~ 'Unknown'
+      )
+    )
+
+  return(ans)
+
+}
+
+add_states <- function(df) {
+  # add full state names - only for US
+
+  ans <- df %>%
+    tidyr::separate(col = province_state, into = c('city_county', 'state'), sep = ', ', fill = 'left', remove = F) %>%
+    dplyr::mutate(
+      state = trimws(state),
+      state = ifelse(country_region!='United States', NA, state),
+      state = dplyr::case_when(
+        state == 'AL' ~ 'Alabama',
+        state == 'AK' ~ 'Alaska',
+        state == 'AZ' ~ 'Arizona',
+        state == 'AR' ~ 'Arkansas',
+        state == 'CA' ~ 'California',
+        state == 'CO' ~ 'Colorado',
+        state == 'CT' ~ 'Connecticut',
+        state == 'DE' ~ 'Delaware',
+        state == 'FL' ~ 'Florida',
+        state == 'GA' ~ 'Georgia',
+        state == 'HI' ~ 'Hawaii',
+        state == 'ID' ~ 'Idaho',
+        state == 'IL' ~ 'Illinois',
+        state == 'IN' ~ 'Indiana',
+        state == 'IA' ~ 'Iowa',
+        state == 'KS' ~ 'Kansas',
+        state == 'KY' ~ 'Kentucky',
+        state == 'LA' ~ 'Louisiana',
+        state == 'ME' ~ 'Maine',
+        state == 'MD' ~ 'Maryland',
+        state == 'MA' ~ 'Massachusetts',
+        state == 'MI' ~ 'Michigan',
+        state == 'MN' ~ 'Minnesota',
+        state == 'MS' ~ 'Mississippi',
+        state == 'MO' ~ 'Missouri',
+        state == 'MT' ~ 'Montana',
+        state == 'NE' ~ 'Nebraska',
+        state == 'NV' ~ 'Nevada',
+        state == 'NH' ~ 'New Hampshire',
+        state == 'NJ' ~ 'New Jersey',
+        state == 'NM' ~ 'New Mexico',
+        state == 'NY' ~ 'New York',
+        state == 'NC' ~ 'North Carolina',
+        state == 'ND' ~ 'North Dakota',
+        state == 'OH' ~ 'Ohio',
+        state == 'OK' ~ 'Oklahoma',
+        state == 'OR' ~ 'Oregon',
+        state == 'PA' ~ 'Pennsylvania',
+        state == 'RI' ~ 'Rhode Island',
+        state == 'SC' ~ 'South Carolina',
+        state == 'SD' ~ 'South Dakota',
+        state == 'TN' ~ 'Tennessee',
+        state == 'TX' ~ 'Texas',
+        state == 'UT' ~ 'Utah',
+        state == 'VT' ~ 'Vermont',
+        state == 'VA' ~ 'Virginia',
+        state == 'WA' ~ 'Washington',
+        state == 'WV' ~ 'West Virginia',
+        state == 'WI' ~ 'Wisconsin',
+        state == 'WY' ~ 'Wyoming',
+        state == 'D.C.' ~ 'District of Columbia',
+        TRUE ~ state
       )
     )
 

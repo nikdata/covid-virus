@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_cases.R
 \name{get_cases}
 \alias{get_cases}
-\title{Retrieve Corona Virust Cases}
+\title{Retrieve Corona Virus Cases}
 \usage{
 get_cases(wide = FALSE)
 }

@@ -1,4 +1,4 @@
-#' Retrieve Corona Virust Cases
+#' Retrieve Corona Virus Cases
 #'
 #' This function returns a dataframe of corona virus cases. It has an optional input of <wide>.
 #'
@@ -46,6 +46,10 @@ get_cases <- function(wide=FALSE) {
 
   # add continents column
   output <- add_continents(output)
+
+  # add state names for US
+  output <- add_states(output) %>%
+    dplyr::select(province_state, city_county, state, country_region, continent, lat, long, date, type, cases)
 
   # if user wants a wide dataframe, then this will create it
   if (wide == TRUE) {
