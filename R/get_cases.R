@@ -49,7 +49,7 @@ get_cases <- function(wide=FALSE) {
 
   # add state names for US
   output <- add_states(output) %>%
-    dplyr::select(province_state, city_county, state, country_region, continent, lat, long, date, type, cases)
+    dplyr::select(province_state, city_county, state, state_name, country_region, continent, lat, long, date, type, cases)
 
   # if user wants a wide dataframe, then this will create it
   if (wide == TRUE) {

@@ -50,30 +50,30 @@ Similar to Rami’s package, the output is as follows:
 
 ``` r
 head(corona_virus)
-#> # A tibble: 6 x 10
-#>   province_state city_county state country_region continent   lat  long
-#>   <chr>          <chr>       <chr> <chr>          <chr>     <dbl> <dbl>
-#> 1 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-#> 2 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-#> 3 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-#> 4 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-#> 5 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-#> 6 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-#> # … with 3 more variables: date <date>, type <chr>, cases <dbl>
+#> # A tibble: 6 x 11
+#>   province_state city_county state state_name country_region continent   lat
+#>   <chr>          <chr>       <chr> <chr>      <chr>          <chr>     <dbl>
+#> 1 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+#> 2 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+#> 3 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+#> 4 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+#> 5 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+#> 6 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+#> # … with 4 more variables: long <dbl>, date <date>, type <chr>, cases <dbl>
 ```
 
 ``` r
-tail(corona_virus)
-#> # A tibble: 6 x 10
-#>   province_state city_county state country_region continent   lat  long
-#>   <chr>          <chr>       <chr> <chr>          <chr>     <dbl> <dbl>
-#> 1 <NA>           <NA>        <NA>  Vietnam        Asia         16   108
-#> 2 <NA>           <NA>        <NA>  Vietnam        Asia         16   108
-#> 3 <NA>           <NA>        <NA>  Vietnam        Asia         16   108
-#> 4 <NA>           <NA>        <NA>  Vietnam        Asia         16   108
-#> 5 <NA>           <NA>        <NA>  Vietnam        Asia         16   108
-#> 6 <NA>           <NA>        <NA>  Vietnam        Asia         16   108
-#> # … with 3 more variables: date <date>, type <chr>, cases <dbl>
+tail(corona_virus) 
+#> # A tibble: 6 x 11
+#>   province_state city_county state state_name country_region continent   lat
+#>   <chr>          <chr>       <chr> <chr>      <chr>          <chr>     <dbl>
+#> 1 <NA>           <NA>        <NA>  <NA>       Vietnam        Asia         16
+#> 2 <NA>           <NA>        <NA>  <NA>       Vietnam        Asia         16
+#> 3 <NA>           <NA>        <NA>  <NA>       Vietnam        Asia         16
+#> 4 <NA>           <NA>        <NA>  <NA>       Vietnam        Asia         16
+#> 5 <NA>           <NA>        <NA>  <NA>       Vietnam        Asia         16
+#> 6 <NA>           <NA>        <NA>  <NA>       Vietnam        Asia         16
+#> # … with 4 more variables: long <dbl>, date <date>, type <chr>, cases <dbl>
 ```
 
 Here’s an example of total cases by region and type (top 10):
@@ -95,47 +95,47 @@ corona_virus %>%
   arrange(desc(total_cases)) %>%
   head(20)
 #> # A tibble: 20 x 3
-#> # Groups:   country_region [7]
-#>    country_region      type      total_cases
-#>    <chr>               <chr>           <dbl>
-#>  1 Afghanistan         confirmed          NA
-#>  2 Afghanistan         death              NA
-#>  3 Afghanistan         recovered          NA
-#>  4 Albania             confirmed          NA
-#>  5 Albania             death              NA
-#>  6 Albania             recovered          NA
-#>  7 Algeria             confirmed          NA
-#>  8 Algeria             death              NA
-#>  9 Algeria             recovered          NA
-#> 10 Andorra             confirmed          NA
-#> 11 Andorra             death              NA
-#> 12 Andorra             recovered          NA
-#> 13 Antigua and Barbuda confirmed          NA
-#> 14 Antigua and Barbuda death              NA
-#> 15 Antigua and Barbuda recovered          NA
-#> 16 Argentina           confirmed          NA
-#> 17 Argentina           death              NA
-#> 18 Argentina           recovered          NA
-#> 19 Armenia             confirmed          NA
-#> 20 Armenia             death              NA
+#> # Groups:   country_region [15]
+#>    country_region type      total_cases
+#>    <chr>          <chr>           <dbl>
+#>  1 China          confirmed       80977
+#>  2 China          recovered       65660
+#>  3 Italy          confirmed       21157
+#>  4 Iran           confirmed       12729
+#>  5 Korea, South   confirmed        8086
+#>  6 Spain          confirmed        6391
+#>  7 Germany        confirmed        4585
+#>  8 France         confirmed        4480
+#>  9 China          death            3193
+#> 10 Iran           recovered        2959
+#> 11 United States  confirmed        2727
+#> 12 Italy          recovered        1966
+#> 13 Italy          death            1441
+#> 14 Switzerland    confirmed        1359
+#> 15 United Kingdom confirmed        1143
+#> 16 Norway         confirmed        1090
+#> 17 Sweden         confirmed         961
+#> 18 Netherlands    confirmed         959
+#> 19 Denmark        confirmed         836
+#> 20 Japan          confirmed         773
 ```
 
 To manually create a wide dataframe, you can do the following (it is
 recommended to use the wide=TRUE argument):
 
     #> # A tibble: 10 x 4
-    #>    country             confirmed death recovered
-    #>    <chr>                   <dbl> <dbl>     <dbl>
-    #>  1 Afghanistan                 0     0         0
-    #>  2 Albania                     0     0         0
-    #>  3 Algeria                     0     0         0
-    #>  4 Andorra                     0     0         0
-    #>  5 Antigua and Barbuda         0     0         0
-    #>  6 Argentina                   0     0         0
-    #>  7 Armenia                     0     0         0
-    #>  8 Aruba                       0     0         0
-    #>  9 Australia                   0     0         0
-    #> 10 Austria                     0     0         0
+    #>    country        confirmed death recovered
+    #>    <chr>              <dbl> <dbl>     <dbl>
+    #>  1 Italy               3497   175       527
+    #>  2 Iran                1365    97         0
+    #>  3 Spain               1159    62       324
+    #>  4 Germany              910     2         0
+    #>  5 France               813    12         0
+    #>  6 United States        548     7         0
+    #>  7 United Kingdom       342    13         0
+    #>  8 Switzerland          220     2         0
+    #>  9 Netherlands          155     2         2
+    #> 10 Austria              151     0         0
 
 ### Wide Dataframe
 
@@ -143,29 +143,30 @@ Sometimes it may be easier to have a “wide” dataframe that enables you
 to see the number of cases for each type in their own respective
 columns.
 
-    #> # A tibble: 10 x 11
-    #>    province_state city_county state country_region continent   lat  long
-    #>    <chr>          <chr>       <chr> <chr>          <chr>     <dbl> <dbl>
-    #>  1 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-    #>  2 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-    #>  3 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-    #>  4 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-    #>  5 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-    #>  6 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-    #>  7 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-    #>  8 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-    #>  9 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-    #> 10 Adams, IN      Adams       Indi… United States  North Am…  39.9 -77.3
-    #> # … with 4 more variables: date <date>, confirmed <dbl>, death <dbl>,
-    #> #   recovered <dbl>
+    #> # A tibble: 10 x 12
+    #>    province_state city_county state state_name country_region continent   lat
+    #>    <chr>          <chr>       <chr> <chr>      <chr>          <chr>     <dbl>
+    #>  1 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+    #>  2 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+    #>  3 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+    #>  4 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+    #>  5 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+    #>  6 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+    #>  7 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+    #>  8 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+    #>  9 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+    #> 10 Adams, IN      Adams       IN    Indiana    United States  North Am…  39.9
+    #> # … with 5 more variables: long <dbl>, date <date>, confirmed <dbl>,
+    #> #   death <dbl>, recovered <dbl>
 
 ``` r
 dplyr::glimpse(covidvirus::get_cases(wide = TRUE))
-#> Observations: 22,313
-#> Variables: 11
+#> Observations: 23,426
+#> Variables: 12
 #> $ province_state <chr> "Adams, IN", "Adams, IN", "Adams, IN", "Adams, IN", "A…
 #> $ city_county    <chr> "Adams", "Adams", "Adams", "Adams", "Adams", "Adams", …
-#> $ state          <chr> "Indiana", "Indiana", "Indiana", "Indiana", "Indiana",…
+#> $ state          <chr> "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", …
+#> $ state_name     <chr> "Indiana", "Indiana", "Indiana", "Indiana", "Indiana",…
 #> $ country_region <chr> "United States", "United States", "United States", "Un…
 #> $ continent      <chr> "North America", "North America", "North America", "No…
 #> $ lat            <dbl> 39.8522, 39.8522, 39.8522, 39.8522, 39.8522, 39.8522, …

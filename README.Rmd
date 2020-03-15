@@ -49,7 +49,7 @@ Similar to Rami's package, the output is as follows:
 head(corona_virus)
 ```
 ```{r}
-tail(corona_virus)
+tail(corona_virus) 
 ```
 
 Here's an example of total cases by region and type (top 10):

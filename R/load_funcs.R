@@ -309,7 +309,9 @@ add_states <- function(df) {
     dplyr::mutate(
       state = trimws(state),
       state = ifelse(country_region!='United States', NA, state),
-      state = dplyr::case_when(
+      state = ifelse(province_state %in% c('Virgin Islands, U.S.'), 'Virgin Islands', state),
+      city_county = ifelse(province_state %in% c('Virgin Islands, U.S.'), NA, city_county),
+      state_name = dplyr::case_when(
         state == 'AL' ~ 'Alabama',
         state == 'AK' ~ 'Alaska',
         state == 'AZ' ~ 'Arizona',
