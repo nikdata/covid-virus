@@ -15,11 +15,11 @@
 #'
 
 get_datasets <- function() {
-  raw_confirmed <- readr::read_csv(file = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv", col_types = readr::cols(.default=readr::col_double(), `Province/State` = readr::col_character(), `Country/Region` = readr::col_character()))
+  raw_confirmed <- readr::read_csv(file = "https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv", col_types = readr::cols(.default=readr::col_double(), `Province/State` = readr::col_character(), `Country/Region` = readr::col_character()))
 
-  raw_death <- readr::read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv", col_types = readr::cols(.default=readr::col_double(), `Province/State` = readr::col_character(), `Country/Region` = readr::col_character()))
+  raw_death <- readr::read_csv("https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv", col_types = readr::cols(.default=readr::col_double(), `Province/State` = readr::col_character(), `Country/Region` = readr::col_character()))
 
-  raw_cured <- readr::read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv", col_types = readr::cols(.default=readr::col_double(), `Province/State` = readr::col_character(), `Country/Region` = readr::col_character()))
+  raw_cured <- readr::read_csv("https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv", col_types = readr::cols(.default=readr::col_double(), `Province/State` = readr::col_character(), `Country/Region` = readr::col_character()))
 
   df_list <- list(infected = raw_confirmed, dead = raw_death, cured = raw_cured)
 
